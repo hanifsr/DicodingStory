@@ -1,3 +1,21 @@
 <resources>
 	<string name="app_name">Dicoding Story</string>
+
+	<string name="email">Email</string>
+	<string name="password">Password</string>
+	<string name="name">Name</string>
+	<string name="sign_in">Sign In</string>
+	<string name="sign_up">Sign Up</string>
+	<string name="sign_out">Sign Out</string>
+
+	<string name="logo_description">Dicoding Story Logo</string>
+	<string name="sign_up_title">Sign up to see stories around the world.</string>
+	<string name="sign_up_message">Don\'t have an account?</string>
+	<string name="sign_in_message">Have an account?</string>
+	<string name="copyright">© 2022 Hanif Sulthan Rizqullah</string>
+
+	<string name="camera">Camera</string>
+	<string name="gallery">Gallery</string>
+	<string name="description">Description</string>
+	<string name="upload">Upload</string>
 </resources>
