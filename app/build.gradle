@@ -1,7 +1,9 @@
 plugins {
 	id 'com.android.application'
 	id 'org.jetbrains.kotlin.android'
-	id 'kotlin-kapt'
+	id 'org.jetbrains.kotlin.kapt'
+	id 'androidx.navigation.safeargs'
+	id 'kotlin-parcelize'
 }
 
 android {
@@ -67,16 +69,15 @@ dependencies {
 	implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
 	// Moshi
-	def moshi_version = "1.12.0"
+	def moshi_version = "1.14.0"
 	implementation "com.squareup.moshi:moshi:$moshi_version"
 	implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
 	kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
-	// ViewModel
-	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-
-	// LiveData
-	implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+	// ViewModel and LiveData
+	def lifecycle_version = "2.5.1"
+	implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+	implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
 	// Glide
 	implementation 'com.github.bumptech.glide:glide:4.12.0'

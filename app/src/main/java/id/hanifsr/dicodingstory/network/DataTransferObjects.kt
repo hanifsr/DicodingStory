@@ -4,18 +4,19 @@ import com.squareup.moshi.JsonClass
 import id.hanifsr.dicodingstory.domain.Story
 
 @JsonClass(generateAdapter = true)
-data class NetworkRegister(
+data class NetworkSignUp(
 	val error: Boolean,
 	val message: String
 )
 
 @JsonClass(generateAdapter = true)
-data class NetworkLogin(
+data class NetworkSignIn(
 	val error: Boolean,
 	val message: String,
 	val loginResult: NetworkUser
 )
 
+@JsonClass(generateAdapter = true)
 data class NetworkUser(
 	val userId: String,
 	val name: String,
@@ -42,8 +43,8 @@ data class NetworkStory(
 	val description: String,
 	val photoUrl: String,
 	val createdAt: String,
-	val lat: Int,
-	val lon: Int
+	val lat: Double?,
+	val lon: Double?
 )
 
 fun NetworkStoryList.asDomainModel(): List<Story> {

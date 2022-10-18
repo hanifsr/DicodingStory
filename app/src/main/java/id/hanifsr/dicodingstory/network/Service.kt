@@ -9,29 +9,29 @@ import retrofit2.http.*
 interface DicodingStoryService {
 
 	@FormUrlEncoded
-	@POST("/signup")
-	suspend fun register(
+	@POST("register")
+	suspend fun signUp(
 		@Field("name") name: String,
 		@Field("email") email: String,
 		@Field("password") password: String
-	): NetworkRegister
+	): NetworkSignUp
 
 	@FormUrlEncoded
-	@POST("/login")
-	suspend fun login(
+	@POST("login")
+	suspend fun signIn(
 		@Field("email") email: String,
 		@Field("password") password: String
-	): NetworkLogin
+	): NetworkSignIn
 
 	@Multipart
-	@POST("/stories")
+	@POST("stories")
 	suspend fun addNewStory(
 		@Header("Authorization") authHeader: String,
 		@Part("description") description: RequestBody,
 		@Part file: MultipartBody.Part
 	): NetworkAddNewStory
 
-	@GET("/stories")
+	@GET("stories")
 	suspend fun getAllStories(
 		@Header("Authorization") authHeader: String
 	): NetworkStoryList
@@ -40,9 +40,10 @@ interface DicodingStoryService {
 object DicodingStoryNetwork {
 
 	private val retrofit = Retrofit.Builder()
-		.baseUrl("https://story-api.dicoding.dev/v1")
+		.baseUrl("https://story-api.dicoding.dev/v1/")
 		.addConverterFactory(MoshiConverterFactory.create())
 		.build()
 
-	val dicodingStory: DicodingStoryService = retrofit.create(DicodingStoryService::class.java)
+	val dicodingStoryService: DicodingStoryService =
+		retrofit.create(DicodingStoryService::class.java)
 }

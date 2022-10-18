@@ -1,82 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".ui.main.MainActivity">
+	xmlns:tools="http://schemas.android.com/tools">
 
-	<TextView
-		android:id="@+id/nameTextView"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="4dp"
-		android:layout_marginBottom="4dp"
-		android:textColor="@color/black"
-		android:textSize="20sp"
-		android:textStyle="bold"
-		app:layout_constraintBottom_toTopOf="@id/recyclerView"
-		app:layout_constraintEnd_toStartOf="@id/signOutButton"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:text="Welcome, Name!" />
+	<data>
 
-	<Button
-		android:id="@+id/signOutButton"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="4dp"
-		android:layout_marginTop="4dp"
-		android:layout_marginEnd="8dp"
-		android:layout_marginBottom="4dp"
-		android:text="@string/sign_out"
-		android:textSize="12sp"
-		app:layout_constraintBottom_toTopOf="@id/recyclerView"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@id/nameTextView"
-		app:layout_constraintTop_toTopOf="parent" />
+		<variable
+			name="viewModel"
+			type="id.hanifsr.dicodingstory.viewmodels.MainViewModel" />
+	</data>
 
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/recyclerView"
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		app:layout_constraintBottom_toTopOf="@id/copyrightTextView"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/nameTextView"
-		tools:listitem="@layout/story_item" />
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".ui.main.MainActivity">
 
-	<com.google.android.material.floatingactionbutton.FloatingActionButton
-		android:id="@+id/newStoryFloatingActionButton"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginEnd="16dp"
-		android:layout_marginBottom="16dp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:srcCompat="@drawable/ic_baseline_add_24" />
+		<TextView
+			android:id="@+id/nameTextView"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="4dp"
+			android:layout_marginBottom="4dp"
+			android:text="@{@string/greeting(viewModel.user.name)}"
+			android:textColor="@color/black"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toTopOf="@id/recyclerView"
+			app:layout_constraintEnd_toStartOf="@id/signOutButton"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="Welcome, Name!" />
 
-	<ImageView
-		android:id="@+id/statusImageView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		<Button
+			android:id="@+id/signOutButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="4dp"
+			android:layout_marginTop="4dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginBottom="4dp"
+			android:text="@string/sign_out"
+			android:textSize="12sp"
+			app:layout_constraintBottom_toTopOf="@id/recyclerView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@id/nameTextView"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<TextView
-		android:id="@+id/copyrightTextView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="32dp"
-		android:layout_marginEnd="32dp"
-		android:layout_marginBottom="8dp"
-		android:text="@string/copyright"
-		android:textSize="14sp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent" />
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recyclerView"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:layout_constraintBottom_toTopOf="@id/copyrightTextView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/nameTextView"
+			app:listData="@{viewModel.stories}"
+			tools:listitem="@layout/story_item" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/newStoryFloatingActionButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="16dp"
+			android:layout_marginBottom="16dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:srcCompat="@drawable/ic_baseline_add_24" />
+
+		<ImageView
+			android:id="@+id/statusImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:apiStatus="@{viewModel.status}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<TextView
+			android:id="@+id/copyrightTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="32dp"
+			android:layout_marginEnd="32dp"
+			android:layout_marginBottom="8dp"
+			android:text="@string/copyright"
+			android:textSize="14sp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

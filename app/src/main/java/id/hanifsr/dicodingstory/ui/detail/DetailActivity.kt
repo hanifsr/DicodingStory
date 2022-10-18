@@ -1,7 +1,8 @@
 package id.hanifsr.dicodingstory.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import id.hanifsr.dicodingstory.R
 
 class DetailActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
