@@ -18,7 +18,7 @@ import id.hanifsr.dicodingstory.R
 import id.hanifsr.dicodingstory.databinding.ActivitySignupBinding
 import id.hanifsr.dicodingstory.domain.User
 import id.hanifsr.dicodingstory.ui.signin.SignInActivity
-import id.hanifsr.dicodingstory.util.UserPreference
+import id.hanifsr.dicodingstory.utils.UserPreference
 import id.hanifsr.dicodingstory.viewmodels.SignUpViewModel
 import id.hanifsr.dicodingstory.viewmodels.ViewModelFactory
 

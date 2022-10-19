@@ -1,4 +1,4 @@
-package id.hanifsr.dicodingstory.util
+package id.hanifsr.dicodingstory.utils
 
 enum class ApiStatus {
 	LOADING,

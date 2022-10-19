@@ -17,8 +17,8 @@ import id.hanifsr.dicodingstory.databinding.ActivityMainBinding
 import id.hanifsr.dicodingstory.ui.add.AddActivity
 import id.hanifsr.dicodingstory.ui.detail.DetailActivity
 import id.hanifsr.dicodingstory.ui.signin.SignInActivity
-import id.hanifsr.dicodingstory.util.StoriesAdapter
-import id.hanifsr.dicodingstory.util.UserPreference
+import id.hanifsr.dicodingstory.utils.StoriesAdapter
+import id.hanifsr.dicodingstory.utils.UserPreference
 import id.hanifsr.dicodingstory.viewmodels.MainViewModel
 import id.hanifsr.dicodingstory.viewmodels.ViewModelFactory
 

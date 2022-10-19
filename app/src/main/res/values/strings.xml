@@ -19,7 +19,7 @@
 	<string name="description">Description</string>
 	<string name="upload">Upload</string>
 
-	<string name="greeting">Welcome, %1$s</string>
+	<string name="greeting">Hello, %1$s</string>
 	<string name="empty_name">Name cannot be empty!</string>
 	<string name="empty_email">Email cannot be empty!</string>
 	<string name="empty_password">Password cannot be empty!</string>
@@ -28,4 +28,7 @@
 	<string name="success">Success</string>
 	<string name="sign_up_success">Sign Up success! Please sign in to continue.</string>
 	<string name="okay">Okay</string>
+	<string name="permission_denied">Permission denied!</string>
+	<string name="choose_picture">Choose a picture</string>
+	<string name="upload_warning">Please take or choose a picture first</string>
 </resources>

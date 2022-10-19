@@ -13,13 +13,13 @@
 	<com.google.android.material.card.MaterialCardView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_margin="16dp"
+		android:layout_margin="8dp"
 		app:cardCornerRadius="20dp"
 		app:cardElevation="5dp">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
-			android:layout_height="300dp">
+			android:layout_height="wrap_content">
 
 			<androidx.constraintlayout.widget.Guideline
 				android:id="@+id/startGuidelineVertical"
@@ -53,9 +53,9 @@
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="14dp"
-				android:text="@{story.createdAt}"
 				android:textAlignment="viewStart"
 				android:textStyle="italic"
+				app:dateFormat="@{story.createdAt}"
 				app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
 				app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
 				app:layout_constraintTop_toBottomOf="@id/storyImageView"

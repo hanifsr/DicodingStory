@@ -2,7 +2,7 @@ package id.hanifsr.dicodingstory.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import id.hanifsr.dicodingstory.util.UserPreference
+import id.hanifsr.dicodingstory.utils.UserPreference
 
 class ViewModelFactory(private val pref: UserPreference) : ViewModelProvider.NewInstanceFactory() {
 

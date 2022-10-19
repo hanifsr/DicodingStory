@@ -1,4 +1,4 @@
-package id.hanifsr.dicodingstory.util
+package id.hanifsr.dicodingstory.utils
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,7 +24,13 @@ class StoriesAdapter(private val onClickListener: OnClickListener) :
 	}
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
-		return StoryViewHolder(StoryItemBinding.inflate(LayoutInflater.from(parent.context)))
+		return StoryViewHolder(
+			StoryItemBinding.inflate(
+				LayoutInflater.from(parent.context),
+				parent,
+				false
+			)
+		)
 	}
 
 	override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {

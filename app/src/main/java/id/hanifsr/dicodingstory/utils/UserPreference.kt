@@ -1,4 +1,4 @@
-package id.hanifsr.dicodingstory.util
+package id.hanifsr.dicodingstory.utils
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

@@ -1,8 +1,8 @@
-package id.hanifsr.dicodingstory.util
+package id.hanifsr.dicodingstory.utils
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +15,6 @@ import id.hanifsr.dicodingstory.domain.Story
 fun bindImage(imageView: ImageView, imageUrl: String?) {
 	imageUrl?.let {
 		val imageUri = imageUrl.toUri().buildUpon().scheme("https").build()
-		Log.d("ggwp", "bindImage: imageUri: $imageUri")
 
 		Glide.with(imageView.context)
 			.load(imageUri)
@@ -51,4 +50,11 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
 			statusImageView.visibility = View.GONE
 		}
 	}
+}
+
+@BindingAdapter("dateFormat")
+fun TextView.setDateFormat(date: String?) {
+	if (date.isNullOrEmpty()) return
+
+	text = date.withDateFormat()
 }

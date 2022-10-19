@@ -5,8 +5,8 @@ import id.hanifsr.dicodingstory.domain.Story
 import id.hanifsr.dicodingstory.domain.User
 import id.hanifsr.dicodingstory.network.DicodingStoryNetwork
 import id.hanifsr.dicodingstory.network.asDomainModel
-import id.hanifsr.dicodingstory.util.ApiStatus
-import id.hanifsr.dicodingstory.util.UserPreference
+import id.hanifsr.dicodingstory.utils.ApiStatus
+import id.hanifsr.dicodingstory.utils.UserPreference
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val pref: UserPreference) : ViewModel() {

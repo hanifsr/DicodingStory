@@ -15,10 +15,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import id.hanifsr.dicodingstory.R
 import id.hanifsr.dicodingstory.databinding.ActivitySigninBinding
-import id.hanifsr.dicodingstory.domain.User
 import id.hanifsr.dicodingstory.ui.main.MainActivity
 import id.hanifsr.dicodingstory.ui.signup.SignUpActivity
-import id.hanifsr.dicodingstory.util.UserPreference
+import id.hanifsr.dicodingstory.utils.UserPreference
 import id.hanifsr.dicodingstory.viewmodels.SignInViewModel
 import id.hanifsr.dicodingstory.viewmodels.ViewModelFactory
 

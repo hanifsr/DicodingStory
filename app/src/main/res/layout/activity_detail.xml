@@ -1,109 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	xmlns:tools="http://schemas.android.com/tools">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<data>
+
+		<variable
+			name="viewModel"
+			type="id.hanifsr.dicodingstory.viewmodels.DetailViewModel" />
+	</data>
+
+	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		tools:context=".ui.detail.DetailActivity">
+		android:layout_height="match_parent">
 
-		<androidx.constraintlayout.widget.Guideline
-			android:id="@+id/startGuidelineVertical"
-			android:layout_width="wrap_content"
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			app:layout_constraintGuide_begin="8dp" />
+			tools:context=".ui.detail.DetailActivity">
 
-		<androidx.constraintlayout.widget.Guideline
-			android:id="@+id/endGuidelineVertical"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			app:layout_constraintGuide_end="8dp" />
+			<androidx.constraintlayout.widget.Guideline
+				android:id="@+id/startGuidelineVertical"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				app:layout_constraintGuide_begin="8dp" />
 
-		<ImageView
-			android:id="@+id/storyImageView"
-			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:adjustViewBounds="false"
-			android:cropToPadding="false"
-			android:scaleType="fitXY"
-			app:layout_constraintDimensionRatio="h,4:3"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:srcCompat="@tools:sample/backgrounds/scenic" />
+			<androidx.constraintlayout.widget.Guideline
+				android:id="@+id/endGuidelineVertical"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				app:layout_constraintGuide_end="8dp" />
 
-		<TextView
-			android:id="@+id/createdAtTextView"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="14dp"
-			android:textAlignment="viewStart"
-			android:textStyle="italic"
-			app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-			app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-			app:layout_constraintTop_toBottomOf="@id/storyImageView"
-			tools:text="Uploaded at: Saturday, 9 July 2022" />
+			<ImageView
+				android:id="@+id/storyImageView"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:cropToPadding="false"
+				android:scaleType="fitXY"
+				app:imageUrl="@{viewModel.story.photoUrl}"
+				app:layout_constraintDimensionRatio="16:9"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-		<ImageView
-			android:id="@+id/userIconImageView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
-			app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-			app:layout_constraintTop_toBottomOf="@id/createdAtTextView"
-			app:srcCompat="@drawable/ic_baseline_person_24"
-			app:tint="@color/black" />
+			<TextView
+				android:id="@+id/createdAtTextView"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="14dp"
+				android:textAlignment="viewStart"
+				android:textStyle="italic"
+				app:dateFormat="@{viewModel.story.createdAt}"
+				app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+				app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+				app:layout_constraintTop_toBottomOf="@id/storyImageView"
+				tools:text="Uploaded at: Saturday, 9 July 2022" />
 
-		<TextView
-			android:id="@+id/nameTextView"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="4dp"
-			android:textAlignment="viewStart"
-			android:textAllCaps="false"
-			android:textColor="@color/black"
-			android:textSize="20sp"
-			android:textStyle="bold"
-			app:layout_constraintBottom_toBottomOf="@id/userIconImageView"
-			app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-			app:layout_constraintStart_toEndOf="@id/userIconImageView"
-			app:layout_constraintTop_toTopOf="@id/userIconImageView"
-			tools:text="Name" />
+			<ImageView
+				android:id="@+id/userIconImageView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+				app:layout_constraintTop_toBottomOf="@id/createdAtTextView"
+				app:srcCompat="@drawable/ic_baseline_person_24"
+				app:tint="@color/black" />
 
-		<TextView
-			android:id="@+id/descriptionTextView"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
-			android:layout_marginBottom="8dp"
-			android:textAlignment="viewStart"
-			android:textAllCaps="false"
-			android:textColor="@color/black"
-			android:textSize="14sp"
-			app:layout_constraintBottom_toTopOf="@id/copyrightTextView"
-			app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-			app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-			app:layout_constraintTop_toBottomOf="@id/nameTextView"
-			tools:text="Lorem ipsum description" />
+			<TextView
+				android:id="@+id/nameTextView"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="4dp"
+				android:text="@{viewModel.story.name}"
+				android:textAlignment="viewStart"
+				android:textAllCaps="false"
+				android:textColor="@color/black"
+				android:textSize="20sp"
+				android:textStyle="bold"
+				app:layout_constraintBottom_toBottomOf="@id/userIconImageView"
+				app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+				app:layout_constraintStart_toEndOf="@id/userIconImageView"
+				app:layout_constraintTop_toTopOf="@id/userIconImageView"
+				tools:text="Name" />
 
-		<TextView
-			android:id="@+id/copyrightTextView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="32dp"
-			android:layout_marginEnd="32dp"
-			android:layout_marginBottom="8dp"
-			android:text="@string/copyright"
-			android:textSize="14sp"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent" />
+			<TextView
+				android:id="@+id/descriptionTextView"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:text="@{viewModel.story.description}"
+				android:textAlignment="viewStart"
+				android:textAllCaps="false"
+				android:textColor="@color/black"
+				android:textSize="14sp"
+				app:layout_constraintBottom_toTopOf="@id/copyrightTextView"
+				app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+				app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+				app:layout_constraintTop_toBottomOf="@id/nameTextView"
+				tools:text="Lorem ipsum description" />
 
-	</androidx.constraintlayout.widget.ConstraintLayout>
+			<TextView
+				android:id="@+id/copyrightTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="32dp"
+				android:layout_marginEnd="32dp"
+				android:layout_marginBottom="8dp"
+				android:text="@string/copyright"
+				android:textSize="14sp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent" />
 
-</ScrollView>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</ScrollView>
+
+</layout>
