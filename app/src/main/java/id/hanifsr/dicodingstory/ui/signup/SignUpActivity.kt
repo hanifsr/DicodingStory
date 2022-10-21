@@ -1,9 +1,12 @@
 package id.hanifsr.dicodingstory.ui.signup
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -36,6 +39,7 @@ class SignUpActivity : AppCompatActivity() {
 		setupView()
 		setupViewModel()
 		setupAction()
+		setupAnimation()
 	}
 
 	private fun setupView() {
@@ -108,6 +112,34 @@ class SignUpActivity : AppCompatActivity() {
 					)
 				}
 			}
+		}
+	}
+
+	private fun setupAnimation() {
+		ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
+			duration = 6000
+			repeatCount = ObjectAnimator.INFINITE
+			repeatMode = ObjectAnimator.REVERSE
+		}.start()
+
+		val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(250)
+		val name =
+			ObjectAnimator.ofFloat(binding.nameEditTextLayout, View.ALPHA, 1f).setDuration(250)
+		val email =
+			ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(250)
+		val password =
+			ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(250)
+		val signUp = ObjectAnimator.ofFloat(binding.signUpButton, View.ALPHA, 1f).setDuration(250)
+		val signInMessage =
+			ObjectAnimator.ofFloat(binding.signInMessageTextView, View.ALPHA, 1f).setDuration(250)
+		val signIn = ObjectAnimator.ofFloat(binding.signInTextView, View.ALPHA, 1f).setDuration(250)
+
+		AnimatorSet().apply {
+			playSequentially(
+				title, name, email, password, signUp, signInMessage, signIn
+			)
+			startDelay = 500
+			start()
 		}
 	}
 }

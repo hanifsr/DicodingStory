@@ -3,7 +3,12 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
-	<data />
+	<data>
+
+		<variable
+			name="viewModel"
+			type="id.hanifsr.dicodingstory.viewmodels.SignInViewModel" />
+	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
@@ -48,6 +53,7 @@
 			android:layout_marginStart="32dp"
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="32dp"
+			android:alpha="0"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/bottomGuidelineHorizontal"
@@ -72,13 +78,14 @@
 			android:layout_marginStart="32dp"
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="32dp"
+			android:alpha="0"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout"
 			app:passwordToggleEnabled="true"
 			app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-			<com.google.android.material.textfield.TextInputEditText
+			<id.hanifsr.dicodingstory.utils.MyEditText
 				android:id="@+id/passwordEditText"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -97,6 +104,7 @@
 			android:layout_marginStart="32dp"
 			android:layout_marginTop="32dp"
 			android:layout_marginEnd="32dp"
+			android:alpha="0"
 			android:backgroundTint="@color/navi"
 			android:text="@string/sign_in"
 			app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +117,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="32dp"
 			android:layout_marginTop="8dp"
+			android:alpha="0"
 			android:text="@string/sign_up_message"
 			android:textColor="@color/black"
 			app:layout_constraintStart_toStartOf="parent"
@@ -119,10 +128,21 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="8dp"
+			android:alpha="0"
 			android:text="@string/sign_up"
 			android:textColor="@color/blue_500"
 			app:layout_constraintStart_toEndOf="@id/signUpMessageTextView"
 			app:layout_constraintTop_toTopOf="@id/signUpMessageTextView" />
+
+		<ImageView
+			android:id="@+id/statusImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:apiStatus="@{viewModel.apiStatus}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<TextView
 			android:id="@+id/copyrightTextView"

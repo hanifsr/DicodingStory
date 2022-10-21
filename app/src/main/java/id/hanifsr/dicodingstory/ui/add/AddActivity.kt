@@ -132,6 +132,7 @@ class AddActivity : AppCompatActivity() {
 				Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show()
 			} else {
 				Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+				finish()
 			}
 		}
 	}

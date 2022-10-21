@@ -38,7 +38,7 @@
 				android:layout_width="0dp"
 				android:layout_height="0dp"
 				android:cropToPadding="false"
-				android:scaleType="fitXY"
+				android:scaleType="centerCrop"
 				app:imageUrl="@{viewModel.story.photoUrl}"
 				app:layout_constraintDimensionRatio="16:9"
 				app:layout_constraintEnd_toEndOf="parent"

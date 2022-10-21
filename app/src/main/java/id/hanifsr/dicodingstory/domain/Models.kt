@@ -1,6 +1,7 @@
 package id.hanifsr.dicodingstory.domain
 
 import android.os.Parcelable
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -21,4 +22,10 @@ data class User(
 	val name: String,
 	val token: String,
 	val isLogin: Boolean
+)
+
+@JsonClass(generateAdapter = true)
+data class Status(
+	val error: Boolean,
+	val message: String?
 )

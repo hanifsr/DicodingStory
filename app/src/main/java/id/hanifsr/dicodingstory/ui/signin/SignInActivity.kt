@@ -1,9 +1,12 @@
 package id.hanifsr.dicodingstory.ui.signin
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -35,6 +38,7 @@ class SignInActivity : AppCompatActivity() {
 		setupView()
 		setupViewModel()
 		setupAction()
+		setupAnimation()
 	}
 
 	private fun setupView() {
@@ -56,13 +60,12 @@ class SignInActivity : AppCompatActivity() {
 			ViewModelFactory(UserPreference.getInstance(dataStore))
 		)[SignInViewModel::class.java]
 
-		signInViewModel.message.observe(this) { message ->
-			if (message.equals("success", true)) {
+		signInViewModel.status.observe(this) {
+			if (!it.error) {
 				startActivity(Intent(this, MainActivity::class.java))
 				finish()
-			} else {
-				Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 			}
+			Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
 		}
 	}
 
@@ -86,6 +89,31 @@ class SignInActivity : AppCompatActivity() {
 					signInViewModel.signIn(email, password)
 				}
 			}
+		}
+	}
+
+	private fun setupAnimation() {
+		ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
+			duration = 6000
+			repeatCount = ObjectAnimator.INFINITE
+			repeatMode = ObjectAnimator.REVERSE
+		}.start()
+
+		val email =
+			ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(250)
+		val password =
+			ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(250)
+		val signIn = ObjectAnimator.ofFloat(binding.signInButton, View.ALPHA, 1f).setDuration(250)
+		val signUpMessage =
+			ObjectAnimator.ofFloat(binding.signUpMessageTextView, View.ALPHA, 1f).setDuration(250)
+		val signUp = ObjectAnimator.ofFloat(binding.signUpTextView, View.ALPHA, 1f).setDuration(250)
+
+		AnimatorSet().apply {
+			playSequentially(
+				email, password, signIn, signUpMessage, signUp
+			)
+			startDelay = 500
+			start()
 		}
 	}
 }
