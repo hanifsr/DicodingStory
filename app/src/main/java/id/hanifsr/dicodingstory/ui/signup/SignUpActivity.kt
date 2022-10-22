@@ -53,6 +53,7 @@ class SignUpActivity : AppCompatActivity() {
 			)
 		}
 		supportActionBar?.hide()
+		binding.lifecycleOwner = this
 	}
 
 	private fun setupViewModel() {
@@ -61,8 +62,10 @@ class SignUpActivity : AppCompatActivity() {
 			ViewModelFactory(UserPreference.getInstance(dataStore))
 		)[SignUpViewModel::class.java]
 
-		signUpViewModel.message.observe(this) { message ->
-			if (message.equals("User created", true)) {
+		binding.viewModel = signUpViewModel
+
+		signUpViewModel.status.observe(this) {
+			if (!it.error) {
 				AlertDialog.Builder(this).apply {
 					setTitle(getString(R.string.success))
 					setMessage(getString(R.string.sign_up_success))
@@ -74,7 +77,7 @@ class SignUpActivity : AppCompatActivity() {
 					show()
 				}
 			} else {
-				Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+				Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
 			}
 		}
 	}

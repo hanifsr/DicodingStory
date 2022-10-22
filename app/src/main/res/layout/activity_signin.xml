@@ -33,6 +33,17 @@
 			app:layout_constraintGuide_percent="0.3"
 			app:layout_constraintStart_toStartOf="parent" />
 
+		<ProgressBar
+			android:id="@+id/progressBar"
+			style="?android:attr/progressBarStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:apiStatus="@{viewModel.apiStatus}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
 		<ImageView
 			android:id="@+id/imageView"
 			android:layout_width="0dp"
@@ -133,16 +144,6 @@
 			android:textColor="@color/blue_500"
 			app:layout_constraintStart_toEndOf="@id/signUpMessageTextView"
 			app:layout_constraintTop_toTopOf="@id/signUpMessageTextView" />
-
-		<ImageView
-			android:id="@+id/statusImageView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:apiStatus="@{viewModel.apiStatus}"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
 
 		<TextView
 			android:id="@+id/copyrightTextView"

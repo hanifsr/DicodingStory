@@ -52,6 +52,7 @@ class SignInActivity : AppCompatActivity() {
 			)
 		}
 		supportActionBar?.hide()
+		binding.lifecycleOwner = this
 	}
 
 	private fun setupViewModel() {
@@ -59,6 +60,8 @@ class SignInActivity : AppCompatActivity() {
 			this,
 			ViewModelFactory(UserPreference.getInstance(dataStore))
 		)[SignInViewModel::class.java]
+
+		binding.viewModel = signInViewModel
 
 		signInViewModel.status.observe(this) {
 			if (!it.error) {

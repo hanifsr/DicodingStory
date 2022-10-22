@@ -2,6 +2,7 @@ package id.hanifsr.dicodingstory.utils
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
@@ -36,11 +37,6 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Story>?) {
 @BindingAdapter("apiStatus")
 fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
 	when (status) {
-		ApiStatus.LOADING -> {
-			statusImageView.visibility = View.VISIBLE
-			statusImageView.setImageResource(R.drawable.loading_animation)
-		}
-
 		ApiStatus.ERROR -> {
 			statusImageView.visibility = View.VISIBLE
 			statusImageView.setImageResource(R.drawable.ic_baseline_cloud_off_24)
@@ -48,6 +44,19 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
 
 		else -> {
 			statusImageView.visibility = View.GONE
+		}
+	}
+}
+
+@BindingAdapter("apiStatus")
+fun bindStatus(progressBar: ProgressBar, status: ApiStatus?) {
+	when (status) {
+		ApiStatus.LOADING -> {
+			progressBar.visibility = View.VISIBLE
+		}
+
+		else -> {
+			progressBar.visibility = View.GONE
 		}
 	}
 }

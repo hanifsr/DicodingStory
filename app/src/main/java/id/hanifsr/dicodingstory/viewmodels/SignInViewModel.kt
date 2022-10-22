@@ -11,6 +11,7 @@ import id.hanifsr.dicodingstory.utils.ApiStatus
 import id.hanifsr.dicodingstory.utils.UserPreference
 import id.hanifsr.dicodingstory.utils.exceptionHandling
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 
 class SignInViewModel(private val pref: UserPreference) : ViewModel() {
 
@@ -43,7 +44,10 @@ class SignInViewModel(private val pref: UserPreference) : ViewModel() {
 				_status.value = Status(networkSignIn.error, networkSignIn.message)
 				_apiStatus.value = ApiStatus.DONE
 			} catch (e: Exception) {
-				_apiStatus.value = ApiStatus.ERROR
+				when (e) {
+					is UnknownHostException -> _apiStatus.value = ApiStatus.NO_CONNECTION
+					else -> _apiStatus.value = ApiStatus.ERROR
+				}
 				_status.value = Status(true, exceptionHandling(e))
 			}
 		}

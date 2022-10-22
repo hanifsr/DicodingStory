@@ -5,12 +5,26 @@
 
 	<data>
 
+		<variable
+			name="viewModel"
+			type="id.hanifsr.dicodingstory.viewmodels.AddViewModel" />
 	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		tools:context=".ui.add.AddActivity">
+
+		<ProgressBar
+			android:id="@+id/progressBar"
+			style="?android:attr/progressBarStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:apiStatus="@{viewModel.apiStatus}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<ImageView
 			android:id="@+id/previewImageView"

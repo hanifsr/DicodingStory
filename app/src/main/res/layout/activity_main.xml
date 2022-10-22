@@ -15,6 +15,16 @@
 		android:layout_height="match_parent"
 		tools:context=".ui.main.MainActivity">
 
+		<ImageView
+			android:id="@+id/statusImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:apiStatus="@{viewModel.apiStatus}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
 		<TextView
 			android:id="@+id/nameTextView"
 			android:layout_width="0dp"
@@ -68,16 +78,6 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:srcCompat="@drawable/ic_baseline_add_24" />
-
-		<ImageView
-			android:id="@+id/statusImageView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:apiStatus="@{viewModel.status}"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
 
 		<TextView
 			android:id="@+id/copyrightTextView"

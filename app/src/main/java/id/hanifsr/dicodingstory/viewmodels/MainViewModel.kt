@@ -8,14 +8,15 @@ import id.hanifsr.dicodingstory.network.asDomainModel
 import id.hanifsr.dicodingstory.utils.ApiStatus
 import id.hanifsr.dicodingstory.utils.UserPreference
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 
 class MainViewModel(private val pref: UserPreference) : ViewModel() {
 
 	val user: LiveData<User> = pref.getUser().asLiveData()
 
-	private val _status = MutableLiveData<ApiStatus>()
-	val status: LiveData<ApiStatus>
-		get() = _status
+	private val _apiStatus = MutableLiveData<ApiStatus>()
+	val apiStatus: LiveData<ApiStatus>
+		get() = _apiStatus
 
 	private val _stories = MutableLiveData<List<Story>>()
 	val stories: LiveData<List<Story>>
@@ -32,15 +33,18 @@ class MainViewModel(private val pref: UserPreference) : ViewModel() {
 	}
 
 	fun getDicodingStories(token: String) {
+		_apiStatus.value = ApiStatus.LOADING
 		viewModelScope.launch {
-			_status.value = ApiStatus.LOADING
 			try {
 				_stories.value =
 					DicodingStoryNetwork.dicodingStoryService.getAllStories("Bearer $token")
 						.asDomainModel()
-				_status.value = ApiStatus.DONE
+				_apiStatus.value = ApiStatus.DONE
 			} catch (e: Exception) {
-				_status.value = ApiStatus.ERROR
+				when (e) {
+					is UnknownHostException -> _apiStatus.value = ApiStatus.NO_CONNECTION
+					else -> _apiStatus.value = ApiStatus.ERROR
+				}
 				_stories.value = ArrayList()
 			}
 		}

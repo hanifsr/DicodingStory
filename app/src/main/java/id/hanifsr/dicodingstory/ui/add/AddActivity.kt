@@ -115,6 +115,8 @@ class AddActivity : AppCompatActivity() {
 		if (!allPermissionGranted()) {
 			ActivityCompat.requestPermissions(this, REQUIRED_PERMISSION, REQUEST_CODE_PERMISSION)
 		}
+
+		binding.lifecycleOwner = this
 	}
 
 	private fun setupViewModel() {
@@ -123,17 +125,17 @@ class AddActivity : AppCompatActivity() {
 			ViewModelFactory(UserPreference.getInstance(dataStore))
 		)[AddViewModel::class.java]
 
+		binding.viewModel = addViewModel
+
 		addViewModel.user.observe(this) {
 			user = it
 		}
 
-		addViewModel.message.observe(this) {
-			if (it.equals("success", true)) {
-				Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show()
-			} else {
-				Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+		addViewModel.status.observe(this) {
+			if (!it.error) {
 				finish()
 			}
+			Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
 		}
 	}
 
